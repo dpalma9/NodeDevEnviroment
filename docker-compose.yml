@@ -3,6 +3,7 @@ services:
   node:
     build: ./node
     container_name: nodejs
+    image: mycustomnodejs
     #command: npm run start
     env_file: .env
     environment:
@@ -12,9 +13,12 @@ services:
       - node_modules:/usr/src/app/node_modules
     ports:
       - "80:8081"
+    depends_on:
+     - db
   db:
     build: ./mysql
     container_name: mysql
+    image: mydb
     env_file: .env
     environment:
       - version=$MYSQL_VERSION

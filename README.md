@@ -11,7 +11,7 @@ Docker and docker-compose.
 
 Requirements
 ---------
-Place your date on the node folder
+Place your data on the node folder
 
 
 How to
