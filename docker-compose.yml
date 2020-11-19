@@ -1,0 +1,32 @@
+version: '3'
+services:
+  node:
+    build: ./node
+    container_name: nodejs
+    #command: npm run start
+    env_file: .env
+    environment:
+      - version=$NODEJS_VERSION
+    volumes:
+      - ./node:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+    ports:
+      - "80:8081"
+  db:
+    build: ./mysql
+    container_name: mysql
+    env_file: .env
+    environment:
+      - version=$MYSQL_VERSION
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - MYSQL_USER=$MYSQL_USER
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+    volumes:
+      - dbdata:/data/db
+    ports:
+      - "3306:3306"
+
+volumes:
+  dbdata:
+  node_modules:
