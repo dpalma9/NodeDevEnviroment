@@ -46,3 +46,9 @@ To rebuild the project (you have to do this everytime you change something on th
 docker-compose up
 ```
 
+To connect to the database container, you have to specify the host:
+```bash
+mysql -u foo -h 0.0.0.0 -p
+```
+
+> **Note:** Don't forget to change the default values on the .env file ;)
